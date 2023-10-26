@@ -43,7 +43,7 @@
           let options = { year: 'numeric', month: 'long', day: 'numeric' };
           
           // Format the date using the user's browser settings
-          let formattedDate = createdAt.toLocaleDateString(undefined, options);
+          let formattedDate = createdAt.toLocaleDateString("en-US", options);
 
           // Create the result text with the formatted date
           let resultText = 'The article "' + articleTitle + '" (Page ID ' + pageId + ') was created on ' + formattedDate + '.';
