@@ -90,16 +90,10 @@
 
         // Process each entry in the data array
         const formattedEntries = data.map((item) => {
-          // Split the ISO date string into components (YYYY-MM-DD)
-          // Note: We avoid parsing the date as UTC or any defined format to respect the user's local timezone.
-          const [year, month, day] = item.creation_date.split("-");
-
-          // Create a Date object in the user's local timezone.
-          // Months are 0-indexed in JavaScript, so we subtract 1.
-          const date = new Date(year, month - 1, day);
-
           // Format the date according to the user's locale (e.g., "September 13, 2021" in en-US)
-          const formattedDate = dateFormatter.format(date);
+          const formattedDate = dateFormatter.format(
+            new Date(item.creation_date)
+          );
 
           // Generate the formatted string for this entry
           return `Article "${item.title}" (Page ID ${item.page_id}) was created at ${formattedDate}.`;
